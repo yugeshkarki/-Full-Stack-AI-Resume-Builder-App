@@ -52,8 +52,8 @@ const EducationForm = ({data, onChange}) => {
      <div className='flex justify-between items-start'>
    <h4>Education #{index+1}</h4>
    <button
-   onClick={()=>removeEducation(index)} className=''>
-    <Trash2 className='sixe-4'/>
+   onClick={()=>removeEducation(index)} className='text-red-500 hover:text-red-700 transition-colors'>
+    <Trash2 className='size-4'/>
    </button>
      </div>
      <div className='grid md:grid-cols-2 gap-3'>
@@ -71,7 +71,7 @@ const EducationForm = ({data, onChange}) => {
      </div>
      
     <input  value={education.gpa|| ""} type='text' onChange={(e)=>updateEducation(index,"gpa",e.target.value)} 
-        placeholder='gpa (optional' className='px-3 py-2 text-sm '/>
+        placeholder='GPA (optional' className='px-3 py-2 text-sm '/>
 
 
       
