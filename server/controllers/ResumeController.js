@@ -8,20 +8,47 @@ import Resume from "../models/Resume.js";
 import fs from 'fs'
 
 //post:/api/resumes/create
-  export const createResume=async(req,res)=>{
+//   export const createResume=async(req,res)=>{
+//     try {
+//         const userId=req.userId;
+//         const {title}=req.body;
+
+//         const newResume= await Resume.create({userId,title})
+//         //return success message
+//        console.log("Saved Resume:", newResume);
+//         return res.status(201).json({message:"resume created successfully",resume:newResume})
+
+//     } catch (error) {
+//         return res.status(400).json({message:error.message})
+//     }
+//   }
+export const createResume = async (req, res) => {
     try {
-        const userId=req.userId;
-        const {title}=req.body;
+        console.log("========== CREATE RESUME ==========");
+        console.log("User ID:", req.userId);
+        console.log("Body:", req.body);
 
-        const newResume= await Resume.create({userId,title})
-        //return success message
+        const userId = req.userId;
+        const { title } = req.body;
 
-        return res.status(201).json({message:"resume created successfully",resume:newResume})
+        const newResume = await Resume.create({
+            userId,
+            title,
+        });
 
+        console.log("Saved Resume:", newResume);
+
+        return res.status(201).json({
+            message: "Resume created successfully",
+            resume: newResume,
+        });
     } catch (error) {
-        return res.status(400).json({message:error.message})
+        console.log(error);
+        return res.status(400).json({
+            message: error.message,
+        });
     }
-  }
+};
   //controller for deleting resume
   //api/resumes/delete
   export const deleteResume=async(req,res)=>{
