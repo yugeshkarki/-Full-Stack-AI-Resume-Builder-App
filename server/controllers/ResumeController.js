@@ -112,7 +112,12 @@ export const createResume = async (req, res) => {
         const {resumeId ,resumeData,removeBackground}=req.body;
         const image=req.file;
 
-        let resumeDataCopy=JSON.parse(resumeData);
+        let resumeDataCopy;
+        if(typeof resumeData==='string'){
+            resumeDataCopy=await JSON.parse(resumeData)
+        }else{
+             resumeDataCopy=structuredClone(resumeData)
+        }
 
         if(image){
 
@@ -128,7 +133,11 @@ export const createResume = async (req, res) => {
 });
 resumeDataCopy.personal_info.image=response.url
         }
-       const resume= await Resume.findByIdAndUpdate({userId,_id:resumeId},resumeDataCopy,{new:true})
+     const resume = await Resume.findByIdAndUpdate(
+    resumeId,
+    resumeDataCopy,
+    { new: true }
+);
        
     
         return res.status(200).json({message:"saved successfully",resume})

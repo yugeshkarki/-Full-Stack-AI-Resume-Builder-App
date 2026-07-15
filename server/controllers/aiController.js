@@ -6,7 +6,7 @@ export const enhanceProfessionalSummary=async(req,res)=>{
   try {
      const{userContent}=req.body;
 
-     if(!userComtent){
+     if(!userContent){
         return res.status(400).json({message:"missing required fields"});
      }
      const response= await ai.chat.completions.create ({
@@ -23,7 +23,7 @@ export const enhanceProfessionalSummary=async(req,res)=>{
     const enhancedContent=response.choices[0].message.content;
     return res.status(200).json({enhancedContent})
   } catch (error) {
-        return res.status(200).json({message:error.content})
+        return res.status(500).json({message:error.content})
   }
 
 
@@ -34,7 +34,7 @@ export const enhanceJobDescription=async(req,res)=>{
   try {
      const{userContent}=req.body;
 
-     if(!userComtent){
+     if(!userContent){
         return res.status(400).json({message:"missing required fields"});
      }
      const response= await ai.chat.completions.create ({
@@ -51,7 +51,7 @@ export const enhanceJobDescription=async(req,res)=>{
     const enhancedContent=response.choices[0].message.content;
     return res.status(200).json({enhancedContent})
   } catch (error) {
-        return res.status(200).json({message:error.content})
+        return res.status(500).json({message:error.content})
   }
 
 
@@ -133,7 +133,7 @@ const userPrompt=`extract data from this resume:${resumeText}
     const newResume=await Resume.create({userId, title,...parsedData})
      res.json({resumeId:newResume._id})
   } catch (error) {
-        return res.status(200).json({message:error.content})
+        return res.status(500).json({message:error.message})
   }
 
 
