@@ -15,7 +15,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 			{/* Header */}
 			<header className="p-8 text-gray" style={{ backgroundColor: accentColor }}>
 				<h1 className="text-4xl font-light mb-3">
-					{data.personal_info?.full_Name || "Your Name"}
+					{data.personal_info?.full_name || "Your Name"}
 				</h1>
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm ">
@@ -95,14 +95,14 @@ const ModernTemplate = ({ data, accentColor }) => {
 				)}
 
 				{/* Projects */}
-				{data.project && data.project.length > 0 && (
+				{data.projects && data.projects.length > 0 && (
 					<section className="mb-8">
 						<h2 className="text-2xl font-light mb-4 pb-2 border-b border-gray-200">
 							Projects
 						</h2>
 
 						<div className="space-y-6">
-							{data.project.map((p, index) => (
+							{data.projects.map((p, index) => (
 								<div key={index} className="relative pl-6 border-l border-gray-200" style={{borderLeftColor: accentColor}}>
 
 

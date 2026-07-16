@@ -20,6 +20,7 @@ const SkillsForm = ({data,onChange}) => {
         addSkill();
     }
   }
+  
   return (
     <div className='space-y-4'>
        <div>
@@ -28,12 +29,19 @@ const SkillsForm = ({data,onChange}) => {
        </div>
        <div className='flex gap-2'>
          <input type='text' placeholder='Enter a skills(eg., javascript,project management' className='flex-1 py-2 px-3 text-sm'
-         onChange={(e)=>setNewSkill(e.target.value)} value={newSkill} onKeyDown={handleKeyPress}/>
+           onChange={(e) => {
+        setNewSkill(e.target.value);
+    }} value={newSkill} onKeyDown={handleKeyPress}/>
          
-         <button onClick={addSkill} disabled={!newSkill.trim} className='flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'>
-            <Plus className='size-4'/>Add
-
-         </button>
+         <button
+    type="button"
+    onClick={addSkill}
+    disabled={newSkill.trim() === ""}
+    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg"
+>
+    <Plus className="size-4" />
+    Add
+</button>
        </div>
        {data.length>0 ? (
         <div className='flex-flex-wrap gap-2'>

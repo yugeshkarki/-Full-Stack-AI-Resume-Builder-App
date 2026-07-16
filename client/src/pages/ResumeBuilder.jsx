@@ -80,7 +80,7 @@ const{token}=useSelector(state=> state.auth)
    
    const handleShare=()=>{
   const frontendUrl=window.location.href.split('/app')[0];
-  const resumeUrl=frontendUrl+ '/view/' + resumeId;
+   const resumeUrl = `${window.location.origin}/view/${resumeId}`;
 
     if(navigator.share){
       navigator.share({url:resumeUrl, text:"my Resume"})
@@ -182,7 +182,7 @@ console.log("FormData resumeId:", formData.get("resumeId"));
       )} 
 
        {activeSection.id=== 'projects' && (
-       <ProjectForm data={resumeData.projects} onChange={(data)=>setResumeData(prev => ({...prev,project:data}))}
+       <ProjectForm data={resumeData.projects} onChange={(data)=>setResumeData(prev => ({...prev,projects:data}))}
       />
       )} 
 

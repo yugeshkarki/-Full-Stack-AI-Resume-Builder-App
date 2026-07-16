@@ -32,7 +32,7 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                 {/* Name + Title */}
                 <div className="col-span-2 flex flex-col justify-center py-10 px-8">
                     <h1 className="text-4xl font-bold text-zinc-700 tracking-widest">
-                        {data.personal_info?.full_Name || "Your Name"}
+                        {data.personal_info?.full_name || "Your Name"}
                     </h1>
                     <p className="uppercase text-zinc-600 font-medium text-sm tracking-widest">
                         {data?.personal_info?.profession || "Profession"}
@@ -155,21 +155,21 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                     )}
 
                     {/* Projects */}
-                    {data.project && data.project.length > 0 && (
+                    {data.projects && data.projects.length > 0 && (
                         <section>
                             <h2 className="text-sm uppercase tracking-widest font-semibold" style={{ color: accentColor }}>
                                 PROJECTS
                             </h2>
                             <div className="space-y-4">
-                                {data.project.map((project, index) => (
+                                {data.projects.map((projects, index) => (
                                     <div key={index}>
-                                        <h3 className="text-md font-medium text-zinc-800 mt-3">{project.name}</h3>
+                                        <h3 className="text-md font-medium text-zinc-800 mt-3">{projects.name}</h3>
                                         <p className="text-sm mb-1" style={{ color: accentColor }} >
-                                            {project.type}
+                                            {projects.type}
                                         </p>
-                                        {project.description && (
+                                        {projects.description && (
                                             <ul className="list-disc list-inside text-sm text-zinc-700  space-y-1">
-                                                {project.description.split("\n").map((line, i) => (
+                                                {projects.description.split("\n").map((line, i) => (
                                                     <li key={i}>{line}</li>
                                                 ))}
                                             </ul>

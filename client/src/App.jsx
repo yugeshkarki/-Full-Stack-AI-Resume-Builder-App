@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux'
 import api from './configs/api.js'
 import { setLoading,login } from './app/features/authSlice.js'
 import {Toaster} from 'react-hot-toast'
+import ResumeView from "./pages/ResumeView";
+
 const App = () => {
 
    const dispatch= useDispatch()
@@ -38,15 +40,16 @@ const App = () => {
   return (
     <>
     <Toaster/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path="app" element={<Layout/>}>
-        <Route index element={<DashBoard/>}/>
-        <Route path="builder/:resumeId" element={<ResumeBuilder/>}/>
+     <Routes>
+    <Route path="/" element={<Home />} />
 
-        </Route>
-        
-              </Routes>
+    <Route path="/view/:resumeId" element={<ResumeView />} />
+
+    <Route path="app" element={<Layout />}>
+        <Route index element={<DashBoard />} />
+        <Route path="builder/:resumeId" element={<ResumeBuilder />} />
+    </Route>
+</Routes>
     </>
   )
 }
